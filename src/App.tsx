@@ -8,6 +8,20 @@ type Check = {
 };
 
 function App() {
+  function load() {
+    const oldCheckIn = window.localStorage.getItem('@academy:check-in');
+
+    if (oldCheckIn) {
+      setCheckIn(JSON.parse(oldCheckIn));
+    }
+
+    const oldCheckOut = window.localStorage.getItem('@academy:check-out');
+
+    if (oldCheckOut) {
+      setCheckOut(JSON.parse(oldCheckOut));
+    }
+  }
+
   const handleSubmitCheckIn = useCallback(() => {
     const oldCheckIn = window.localStorage.getItem('@academy:check-in');
 
@@ -29,6 +43,8 @@ function App() {
         JSON.stringify([newCheckIn])
       );
     }
+
+    load();
   }, []);
 
   const handleSubmitCheckOut = useCallback(() => {
@@ -52,23 +68,15 @@ function App() {
         JSON.stringify([newCheckOut])
       );
     }
+
+    load();
   }, []);
 
   const [checkIn, setCheckIn] = useState<Check[]>([]);
   const [checkOut, setCheckOut] = useState<Check[]>([]);
 
   useEffect(() => {
-    const oldCheckIn = window.localStorage.getItem('@academy:check-in');
-
-    if (oldCheckIn) {
-      setCheckIn(JSON.parse(oldCheckIn));
-    }
-
-    const oldCheckOut = window.localStorage.getItem('@academy:check-out');
-
-    if (oldCheckOut) {
-      setCheckOut(JSON.parse(oldCheckOut));
-    }
+    load();
   }, []);
 
   return (
