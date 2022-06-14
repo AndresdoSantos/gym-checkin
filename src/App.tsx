@@ -56,7 +56,10 @@ function App() {
     };
 
     if (oldCheckOut) {
+      console.log(newCheckOut);
+
       const oldCheckOutParsed = JSON.parse(oldCheckOut);
+      console.log(oldCheckOutParsed);
 
       window.localStorage.setItem(
         '@academy:check-out',
@@ -117,7 +120,7 @@ function App() {
               {checkIn.map((item) => (
                 <li key={item.toString()} className="w-full my-2 text-start">
                   <p className="text-white text-xs font-light uppercase">
-                    {dayjs(item.date).format('DD MMMM YYYY HH:MM')}
+                    {dayjs(item.date).format('DD MMMM YYYY HH:mm')}
                   </p>
                 </li>
               ))}
@@ -130,7 +133,7 @@ function App() {
                     key={item.toString()}
                     className="text-white text-xs font-light uppercase"
                   >
-                    {dayjs(item.date).format(`DD MMMM YYYY HH:MM`)}
+                    {dayjs(item.date).format('DD MMMM YYYY HH:mm')}
                   </p>
                 </li>
               ))}
