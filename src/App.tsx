@@ -111,9 +111,15 @@ function App() {
         </header>
 
         <div className="mr-auto mt-11 w-full">
-          <h1 className="text-white text-xs uppercase mb-4">
-            your checkin's and checkout's
-          </h1>
+          <header className="flex items-center justify-between w-full mb-4">
+            <h1 className="text-white text-xs uppercase">
+              your checkin's and checkout's
+            </h1>
+
+            <p className="text-white text-xs font-light uppercase">
+              total de {checkIn.length} no ano
+            </p>
+          </header>
 
           <section className="grid grid-cols-2">
             <ul className="flex flex-col items-center justify-between w-full">
